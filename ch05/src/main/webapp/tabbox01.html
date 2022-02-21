@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>리스트를 이용한 메뉴 만들기</title>
+<style type="text/css">
+*{ margin:0; padding:0 }
+body{ font-family: '맑은 고딕' 돋움; font-size:0.75em; color:#333 }
+ul, ol {list-style-type: none;}
+.tab-box{width:520px; margin:100px auto 0 auto; }
+.tab-box li{
+	background-color:gray;
+	width:100px;
+	border:1px solid red;
+	border-radius:10px;	
+	float: right;
+	text-align: center;
+	line-height:22px;
+	margin-right: 2px;
+}
+
+.tab-box li.selected{
+	background-color: green;
+}
+.tab-box ul{ 
+	height:24px;
+}
+.tab-box div{
+	border:1px solid blue;
+	text-align:center;
+	line-height:200px;
+	margin-top: -1px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+var liSelected=null;
+var onTabClicked=function(e) {
+	e.className="selected";
+	
+	if(liSelected !=null && liSelected != e){
+		liSelected.className="";
+	}
+	
+	liSelected=e;
+}
+</script>
+</head>
+<body>
+<div class="tab-box">
+	<ul>
+        <li onclick="onTabClicked(this)">메뉴 1</li>
+        <li onclick="onTabClicked(this)">메뉴 2</li>
+        <li onclick="onTabClicked(this)">메뉴 3</li>
+        <li onclick="onTabClicked(this)">메뉴 4</li>
+        <li onclick="onTabClicked(this)">메뉴 5</li>
+    </ul>
+    <div>
+    	탭뷰입니다.
+    </div>
+</div>    
+</body>
+</html>

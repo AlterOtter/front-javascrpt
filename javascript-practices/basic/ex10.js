@@ -64,6 +64,8 @@ o5.name="둘리";
 o5["age"] = 10;
 o5.length=2;
 
-console.log(o5["0"],o5[1],o5.length,o5["name"],o5.age,);
+console.log(o5["0"],o5[1],o5.length,o5["name"],o5.age);
+
+
 
 

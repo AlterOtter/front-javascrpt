@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+//현재 모니터의 width 및 height 구하
+var width =screen.width;
+var height = screen.height;
+console.log(width+":"+height);
+var child=window.open("","","width=200,height=100");
+setTimeout(() => {
+	child.moveTo(0,0);
+	child.resizeTo(width,height);
+	
+	setInterval(() => {
+		child.resizeBy(-20,20);
+		child.moveBy(10,10);
+	}, 1000);
+}, 1000);
+</script>
+<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<h1>BOM(Browser Object Model)</h1>
+	<h2>2. screen 객체</h2>
+</body>
+</html>

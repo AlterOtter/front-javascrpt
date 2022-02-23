@@ -34,11 +34,20 @@ console.log(s);
 
 //가변 파라미터 함수
 var sum = function(){
-    console.log(arguments,arguments instanceof Array,arguments.length);
+    // console.log(arguments,arguments instanceof Array,arguments.length);
     var sum=0;
-    for(var i=0;i<arguments.length;i++){
-        sum+= arguments[i];
-    }
+    // Error: arguments의  __proto__는 Object의 prototype에 chain이 되어 있기 때문
+    // for(var i=0;i<arguments.length;i++){
+    //     sum+= arguments[i];
+    // }
+    
+    // arguments는 유사배열  foreach, filter 등등 기능을 이용하려면 Array.prototype.().call 이나 apply 를 사용해야함.. 
+    arguments=Array.prototype.filter.call(arguments,(e)=>e>10)
+
+    Array.prototype.forEach.call(arguments,function(e){
+        sum +=e;
+    });
+
     return sum;
 }
 

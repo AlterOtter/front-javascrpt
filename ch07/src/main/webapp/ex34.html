@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>sample1</title>
+<link href='image-viewer.css' type='text/css' rel="stylesheet"/>
+<script type="text/javascript" src="./jquery/jquery-3.6.0.js"></script>
+<!--  <script type="text/javascript" src="image-viewer.js"></script>-->
+<script>
+//	imageViewer.init();
+/*
+ 1. 이미지에 click 했을 때도 이미지가 랜덤하게 바귀게 끔..
+ 2. 슬라이드 쇼
+ 	- 버튼이 슬라이드 쇼 중지로 바꾸기
+ 	- 3초 간격으로 이미지가 랜덤하게 바뀌게함
+ 	- 버튼을 누르면 슬라이드 쇼를 중지
+ 	- 버튼이 슬라이드 시작으로 바뀌기
+ 3. imageViewer object(image-viewer.js)로 캡슐화 시키기
+ 
+*/
+var Interval= null;
+var SlideShow=false;
+var images = [ 
+	{name:"국화",file:"Chrysanthemum.jpg"}, 
+	{name:"사막",file:"Desert.jpg"}, 
+	{name:"수국",file:"Hydrangeas.jpg"}, 
+	{name:"해파리",file:"Jellyfish.jpg"}, 
+	{name:"코알라",file:"Koala.jpg"}, 
+	{name:"등대",file:"Lighthouse.jpg"}, 
+	{name:"펭귄",file:"Penguins.jpg"}, 
+	{name:"툴립",file:"Tulips.jpg" }
+	];
+	
+$(function(){
+	var index=Math.floor(Math.random()*images.length);
+	$(".image-viewer img").attr({
+		alt: images[index].name,
+		src:"images/"+images[index].file
+	});
+});
+$(function(){
+	$("#btn-change").click(function(){
+		
+		var index=Math.floor(Math.random()*images.length);
+		$(".image-viewer img").attr({
+			alt: images[index].name,
+			src:"images/"+images[index].file
+		});
+	});
+});
+
+$(function(){
+	
+		$("#btn-slideshow").click(function(){
+			if(SlideShow){
+				SlideShow=false;
+				console.log(Interval);
+				$("#btn-slideshow").text("슬라이드 시작");
+				clearInterval(Interval);
+			}else{
+				SlideShow=true;
+				$("#btn-slideshow").text("슬라이드 정지");
+				Interval =setInterval(() => {
+				var index=Math.floor(Math.random()*images.length);
+				$(".image-viewer img").attr({
+						alt: images[index].name,
+						src:"images/"+images[index].file});
+				}, 3000);
+			}
+
+	});
+	
+});
+</script>
+</head>
+<body>
+	<div class="image-viewer">
+		<div class="buttons">
+			<button id="btn-change">이미지변경</button>
+			<button id="btn-slideshow">슬라이드쇼 시작</button>
+		</div>
+		<div>
+			<img/>
+		</div>
+	</div>
+</body>
+</html>

@@ -3,6 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+/*
+ Event Propagation(Event Bubbling)
+특정 이밴트가 발생 했을때, 그 이밴트가 상위/하위 엘리먼트로 전파되어 가는것
+ IE8 이하 => outter-div > inner-div > header > text
+ standard others: outter-div < inner-div < header <text
+ */
+  window.addEventListener("load",function(){
+	 document.getElementById('outer-div').addEventListener('click',function(e){
+		 var event = e||window.event;
+		 //prevent event propagation
+		 event.cancelBubble = true; // Ie8 이하에서만 통함
+		 event.stopPropagation && event.stopPropagation(); // standard browser;
+		 console.log("outer");
+	 }) ;
+	document.getElementById('inner-div').addEventListener('click',function(e){
+		 console.log("inner");
+	}) ;
+	document.getElementById('header').addEventListener('click',function(e){
+		 console.log("header");
+	}) ;
+	document.getElementById('text').addEventListener('click',function(e){
+		 console.log("text");
+	}) ;
+  });
+</script>
 </head>
 <body>
 	<h1>DOM(Document Object Model)</h1>
@@ -11,7 +37,7 @@
 	<div id='outer-div'>
 		<div id='inner-div'>
 			<h1 id='header'>
-				<span id='text'>text</span>
+				<span id='text'>text</span> 
 			</h1>
 		</div>
 	</div>

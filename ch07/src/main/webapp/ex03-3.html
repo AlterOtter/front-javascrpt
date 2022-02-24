@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="jquery/jquery-3.6.0.js"></script>
+<script>
+$(function(){
+	var $obj = $(".par");
+	
+	console.log($obj.length);
+	console.log(typeof($obj)+':'+($obj instanceof Array)); // object : False  즉 유사배열임
+	console.log($obj.get(0)); //HTML Element에 접근 가능
+	
+	$obj.css('color','red');
+	
+	$obj.click(function(){
+		//이밴트 핸들러에서의 this 는 JQuery가 아닌 HTML Element이다.
+		console.log('clicked'+this);
+		
+		//만약, 핸들러 안에서 이밴트 대상이 되는 this(HTML Element)의 OS,DOM 조작을 해야 할 경우
+		$(this).css("color",'blue');
+		$(this).css("text-decoration","underline");
+		$(this).text("죽어죽어죽어죽어죽어죽어죽어죽어죽어죽어죽어");
+		
+//		$(this).css("text-decoration","underline").text("클릭!");
+	});
+
+});
+</script>
+</head>
+<body>
+	<h1 id="header">Simple jQuery 만들기2</h1>
+	
+	<p class='par'>문장1</p>
+	<p>문장2</p>
+	<p  class='par'>문장3</p>
+	<p>문장4</p>
+</body>
+</html>

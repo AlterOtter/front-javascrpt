@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 소스버전 -->
+<!--  <script type="text/javascript" src="jquery/jquery-3.6.0.js"></script>-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	console.log(jQuery().jquery);
+	//1. jQuery는 function type의 객체다
+	//2. jQuery 함수를 호출하면 object 타입의 객체를 반환한다
+	//3. $는 jquery 함수 객체를 참조한다
+	//4. jquery 라이브러리의 정상적인 로딩은 jquery 객체의 jquery 프로퍼티의 값(버전정보)로 확인 할 수 있다.
+	var $obj = jQuery();
+	console.log(typeof(jQuery),typeof($obj),$obj.jquery);
+	
+</script>
+</head>
+<body>
+	<h1>jQuery 로딩</h1>
+</body>
+</html>
+ 
